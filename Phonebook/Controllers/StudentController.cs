@@ -103,5 +103,12 @@ namespace Phonebook.Controllers
             Student student = DocumentDBManager<Student>.GetStudent(s => s.id == id);
             return View(student);
         }
+
+        // Search by location
+        public ActionResult SearchByLocation(string SearchByLocation)
+        {
+            var students = DocumentDBManager<Student>.Search(s => s.Location.Contains(SearchByLocation));
+            return View(students);
+        }
     }
 }

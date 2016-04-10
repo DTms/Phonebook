@@ -1,16 +1,25 @@
 ﻿@model IEnumerable<Phonebook.Models.Student>
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "SearchByLocation";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Home</h2>
+<h2>SearchByLocation</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create") |
-    @Html.ActionLink("Search By Location", "SearchByLocation")
+    @Html.ActionLink("Home", "Index") |
+    @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+        <p>
+            Location:@Html.TextBox("SearchByLocation")
+            <input type="submit" value="Search" />
+        </p>
+    }
 </p>
+
 <table class="table">
     <tr>
         <th>

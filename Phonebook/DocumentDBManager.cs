@@ -142,6 +142,13 @@ namespace Phonebook
                         .FirstOrDefault();
         }
 
+        public static IEnumerable<T> Search(Expression<Func<T, bool>> predicate)
+        {
+            return Client.CreateDocumentQuery<T>(Collection.DocumentsLink)
+                        .Where(predicate)
+                        .AsEnumerable();
+        }
+
         private static Document GetDocumentFromCollectionDB(string id)
         {
             return Client.CreateDocumentQuery(Collection.DocumentsLink)
