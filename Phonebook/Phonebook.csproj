@@ -269,6 +269,7 @@
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\SearchByLocation.cshtml" />
+    <Content Include="Views\Student\SearchByAge.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

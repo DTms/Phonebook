@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<Phonebook.Models.Student>
 
 @{
-    ViewBag.Title = "SearchByLocation";
+    ViewBag.Title = "SearchByAge";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Search By Location</h2>
+<h2>Search By Age</h2>
 
 <p>
     @Html.ActionLink("Home", "Index") |
@@ -13,13 +13,13 @@
 
     @using (Html.BeginForm())
     {
-        <p>
-            Location:@Html.TextBox("SearchByLocation")
-            <input type="submit" value="Search" />
-        </p>
+    <p>
+        Age Min:<input id="SearchByAgeMin" type="number" name="SearchByAgeMin" min="18" max="35" /> - 
+        Age Max:<input id="SearchByAgeMax" type="number" name="SearchByAgeMax" min="18" max="35" />
+        <input type="submit" value="Search" />
+    </p>
     }
 </p>
-
 <table class="table">
     <tr>
         <th>

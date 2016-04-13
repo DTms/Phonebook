@@ -110,5 +110,16 @@ namespace Phonebook.Controllers
             var students = DocumentDBManager<Student>.Search(s => s.Location.Contains(SearchByLocation));
             return View(students);
         }
+
+        // Search by age
+        public ActionResult SearchByAge(string SearchByAgeMin, string SearchByAgeMax)
+        {
+            SearchByAgeMin = SearchByAgeMin == "" ? null : SearchByAgeMin;
+            SearchByAgeMax = SearchByAgeMax == "" ? null : SearchByAgeMax;
+            int searchByAgeMin = int.Parse(SearchByAgeMin == null ? "18" : SearchByAgeMin);
+            int searchByAgeMax = int.Parse(SearchByAgeMax == null ? "35" : SearchByAgeMax);
+            var students = DocumentDBManager<Student>.Search(s => (s.Age >= searchByAgeMin) && (s.Age <= searchByAgeMax));
+            return View(students);
+        }
     }
 }

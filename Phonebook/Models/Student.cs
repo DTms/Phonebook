@@ -21,7 +21,6 @@ namespace Phonebook.Models
 
             set
             {
-                //if (Regex.IsMatch(value, "^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$"))
                     surname = value;
             }
         }
@@ -35,12 +34,11 @@ namespace Phonebook.Models
 
             set
             {
-                //if (Regex.IsMatch(value, "^[a-zA-Z][a-zA-Z0-9-_\\.]{1,20}$"))
                     name = value;
             }
         }
 
-        public ushort Age
+        public int Age
         {
             get
             {
@@ -49,7 +47,6 @@ namespace Phonebook.Models
 
             set
             {
-                //if (value > 15 && value < 40)
                     age = value;
             }
         }
@@ -63,7 +60,6 @@ namespace Phonebook.Models
 
             set
             {
-                //if (Regex.IsMatch(value.ToString(), "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$"))
                     phoneNumber = value;
             }
         }
@@ -77,7 +73,6 @@ namespace Phonebook.Models
 
             set
             {
-                //if (Regex.IsMatch(value, "^[a-zA-Z][a-zA-Z0-9-_\\.]{1,60}$"))
                     location = value;
             }
         }
@@ -89,7 +84,7 @@ namespace Phonebook.Models
         private string name;
 
         [JsonProperty(PropertyName = "age")]
-        private UInt16 age;
+        private int age;
 
         [JsonProperty(PropertyName = "phoneNumber")]
         private UInt64 phoneNumber;
