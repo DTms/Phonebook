@@ -166,7 +166,8 @@ namespace Phonebook
         public static async Task DeleteStudentAsync(string id)
         {
             Document doc = GetDocumentFromCollectionDB(id);
-            await client.DeleteDocumentAsync(doc.SelfLink);
+            if (doc != null)
+                await client.DeleteDocumentAsync(doc.SelfLink);
         }
     }
 }

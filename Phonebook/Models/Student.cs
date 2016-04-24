@@ -21,7 +21,7 @@ namespace Phonebook.Models
 
             set
             {
-                    surname = value;
+                surname = value;
             }
         }
 
@@ -34,7 +34,7 @@ namespace Phonebook.Models
 
             set
             {
-                    name = value;
+                name = value;
             }
         }
 
@@ -47,7 +47,7 @@ namespace Phonebook.Models
 
             set
             {
-                    age = value;
+                age = value;
             }
         }
 
@@ -60,7 +60,7 @@ namespace Phonebook.Models
 
             set
             {
-                    phoneNumber = value;
+                phoneNumber = value;
             }
         }
 
@@ -73,8 +73,20 @@ namespace Phonebook.Models
 
             set
             {
-                    location = value;
+                location = value;
             }
+        }
+
+        public override bool Equals(Object obj)
+        {
+
+            if (obj is Student)
+            {
+                var s = obj as Student;
+                return (s.age == age) && (s.id == id) && (s.location == location) && (s.name == name) &&
+            (s.surname == surname) && (s.phoneNumber == phoneNumber);
+            }
+            return false;
         }
 
         [JsonProperty(PropertyName = "surname")]

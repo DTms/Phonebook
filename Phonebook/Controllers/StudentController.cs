@@ -14,12 +14,14 @@ namespace Phonebook.Controllers
         // GET: All Students from DB
         public ActionResult Index()
         {
+            ViewBag.Title = "Home";
             var students = DocumentDBManager<Student>.GetAllStudents();
             return View(students);
         }
         // Create and save the database
         public ActionResult Create()
         {
+            ViewBag.Title = "Create";
             return View();
         }
 
@@ -29,6 +31,7 @@ namespace Phonebook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Surname,Name,Age,PhoneNumber,Location")] Student student)
         {
+            ViewBag.Title = "Create";
             if (ModelState.IsValid)
             {
                 await DocumentDBManager<Student>.CreateStudentAsync(student);
@@ -40,6 +43,7 @@ namespace Phonebook.Controllers
         // Editing student data and save the database
         public ActionResult Edit(string id)
         {
+            ViewBag.Title = "Edit";
             if (string.IsNullOrEmpty(id))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -61,6 +65,7 @@ namespace Phonebook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Surname,Name,Age,PhoneNumber,Location")] Student student)
         {
+            ViewBag.Title = "Edit";
             if (ModelState.IsValid)
             {
                 await DocumentDBManager<Student>.UpdateStudentAsync(student.id, student);
@@ -72,6 +77,7 @@ namespace Phonebook.Controllers
 
         public ActionResult Delete(string id)
         {
+            ViewBag.Title = "Delete";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -90,12 +96,14 @@ namespace Phonebook.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed([Bind(Include = "Id")] string id)
         {
+            ViewBag.Title = "DeleteConfirmed";
             await DocumentDBManager<Student>.DeleteStudentAsync(id);
             return RedirectToAction("Index");
         }
 
         public ActionResult Details(string id)
         {
+            ViewBag.Title = "Details";
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,6 +115,7 @@ namespace Phonebook.Controllers
         // Search by location
         public ActionResult SearchByLocation(string SearchByLocation)
         {
+            ViewBag.Title = "SearchByLocation";
             var students = DocumentDBManager<Student>.Search(s => s.Location.Contains(SearchByLocation));
             return View(students);
         }
@@ -114,6 +123,7 @@ namespace Phonebook.Controllers
         // Search by age
         public ActionResult SearchByAge(string SearchByAgeMin, string SearchByAgeMax)
         {
+            ViewBag.Title = "SearchByAge";
             SearchByAgeMin = SearchByAgeMin == "" ? null : SearchByAgeMin;
             SearchByAgeMax = SearchByAgeMax == "" ? null : SearchByAgeMax;
             int searchByAgeMin = int.Parse(SearchByAgeMin == null ? "18" : SearchByAgeMin);

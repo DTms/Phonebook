@@ -264,12 +264,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\Student\Create.cshtml" />
-    <Content Include="Views\Student\Delete.cshtml" />
-    <Content Include="Views\Student\Edit.cshtml" />
-    <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\SearchByLocation.cshtml" />
     <Content Include="Views\Student\SearchByAge.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
