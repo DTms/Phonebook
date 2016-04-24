@@ -62,6 +62,7 @@ namespace Phonebook.Controllers.Tests
             Assert.IsNotNull(resultCreate);
         }
 
+        [TestMethod()]
         public void CreateViewEqualCreateCshtml()
         {
             ViewResult resultCreate = studentController.Create() as ViewResult;
