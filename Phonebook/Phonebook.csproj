@@ -266,9 +266,9 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\SearchByLocation.cshtml" />
     <Content Include="Views\Student\SearchByAge.cshtml" />
-    <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Student\Delete.cshtml" />
     <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>

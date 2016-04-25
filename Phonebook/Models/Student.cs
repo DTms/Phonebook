@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 
 namespace Phonebook.Models
 {
@@ -12,6 +13,7 @@ namespace Phonebook.Models
         [JsonProperty(PropertyName = "id")]
         public string id { get; set; }
 
+        [Required]
         public string Surname
         {
             get
@@ -25,6 +27,7 @@ namespace Phonebook.Models
             }
         }
 
+        [Required]
         public string Name
         {
             get
@@ -38,6 +41,7 @@ namespace Phonebook.Models
             }
         }
 
+        [Required]
         public int Age
         {
             get
@@ -51,6 +55,7 @@ namespace Phonebook.Models
             }
         }
 
+        [Required]
         public ulong PhoneNumber
         {
             get
@@ -64,6 +69,7 @@ namespace Phonebook.Models
             }
         }
 
+        [Required]
         public string Location
         {
             get
@@ -89,18 +95,23 @@ namespace Phonebook.Models
             return false;
         }
 
+        [Required]
         [JsonProperty(PropertyName = "surname")]
         private string surname;
 
+        [Required]
         [JsonProperty(PropertyName = "name")]
         private string name;
 
+        [Required]
         [JsonProperty(PropertyName = "age")]
         private int age;
 
+        [Required]
         [JsonProperty(PropertyName = "phoneNumber")]
         private UInt64 phoneNumber;
 
+        [Required]
         [JsonProperty(PropertyName = "location")]
         private string location;
     }
