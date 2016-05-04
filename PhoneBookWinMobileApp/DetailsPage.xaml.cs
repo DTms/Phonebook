@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using PhoneBookWinMobileApp.Resources;
+using System.Threading;
 
 namespace PhoneBookWinMobileApp
 {
     public partial class DetailsPage : PhoneApplicationPage
     {
+        private string selectedIndex = "";
         // Constructor
         public DetailsPage()
         {
@@ -27,8 +24,7 @@ namespace PhoneBookWinMobileApp
         {
             if (DataContext == null)
             {
-                string selectedIndex = "";
-                if (NavigationContext.QueryString.TryGetValue("selectedItem", out selectedIndex))
+                if (NavigationContext.QueryString.TryGetValue("selectedItem", out this.selectedIndex))
                 {
                     int index = int.Parse(selectedIndex);
                     DataContext = App.ViewModel.Items[index];
@@ -36,20 +32,22 @@ namespace PhoneBookWinMobileApp
             }
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (!selectedIndex.Equals(""))
+            {
+                int index = int.Parse(selectedIndex);
+                string id = App.ViewModel.Items[index].ID;
+                string URL = "http://studentphonebook.azurewebsites.net/api/StudentWebApi/" + id;
+                WebRequest request = WebRequest.Create(URL);
+                request.Method = "DELETE";
+                request.GetResponseAsync();
+                Thread.Sleep(1000);
+                App.ViewModel.IsDataLoaded = false;
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
+            }
+        }
 
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
     }
 }

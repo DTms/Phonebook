@@ -48,7 +48,7 @@ namespace PhoneBookWinMobileApp.ViewModels
             if (this.IsDataLoaded == false)
             {
                 this.Items.Clear();
-                this.Items.Add(new ItemViewModel() { ID = "0", Surname = "Please Wait...", Name = "Please wait while the list of Student records are downloaded from the server.", Age = null });
+                this.Items.Add(new ItemViewModel() { IdFromList = "0", ID = "0", Surname = "Please Wait...", Name = "Please wait while the list of Student records are downloaded from the server.", Age = null });
                 WebClient webClient = new WebClient();
                 webClient.Headers["Accept"] = "application/json";
                 webClient.DownloadStringCompleted += new DownloadStringCompletedEventHandler(webClient_DownloadStudentsCompleted);
@@ -69,7 +69,8 @@ namespace PhoneBookWinMobileApp.ViewModels
                     {
                         this.Items.Add(new ItemViewModel()
                         {
-                            ID = (id++).ToString(),
+                            IdFromList = (id++).ToString(),
+                            ID = student.id,
                             Surname = student.Surname,
                             Name = student.Name,
                             Age = student.Age.ToString(),
@@ -84,6 +85,7 @@ namespace PhoneBookWinMobileApp.ViewModels
             {
                 this.Items.Add(new ItemViewModel()
                 {
+                    IdFromList = "0",
                     ID = "0",
                     Surname = "An Error Occurred",
                     Name = String.Format("The following exception occured: {0}", ex.Message),

@@ -12,6 +12,23 @@ namespace PhoneBookWinMobileApp.ViewModels
 {
     public class ItemViewModel : INotifyPropertyChanged
     {
+        private string idFromList;
+        public string IdFromList
+        {
+            get
+            {
+                return idFromList;
+            }
+            set
+            {
+                if (value != idFromList)
+                {
+                    idFromList = value;
+                    NotifyPropertyChanged("IdFromList");
+                }
+            }
+        }
+
         private string id;
         /// <summary>
         /// Sample ViewModel property; this property is used to identify the object.

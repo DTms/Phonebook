@@ -43,7 +43,7 @@ namespace Phonebook.Controllers
         // DELETE: api/StudentWebApi/5
         public void Delete(string id)
         {
-            if (!id.Equals(null))
+            if (!id.Equals(""))
             {
                 DocumentDBManager<Student>.DeleteStudentAsync(id);
             }

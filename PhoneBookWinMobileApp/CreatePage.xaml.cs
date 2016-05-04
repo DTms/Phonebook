@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Newtonsoft.Json;
 using PhoneBookWinMobileApp.Models;
+using System.Threading;
 
 namespace PhoneBookWinMobileApp
 {
@@ -36,6 +37,7 @@ namespace PhoneBookWinMobileApp
             WebClient webClient = new WebClient();
             webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
             webClient.UploadStringAsync(new Uri(URL), "POST", studentJson);
+            Thread.Sleep(1000);
             App.ViewModel.IsDataLoaded = false;
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
